@@ -10,9 +10,6 @@ class Tweet extends User
 		$this->pdo = $pdo;
 	}
 
-
-
-
 } 
 
 ?>
