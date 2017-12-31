@@ -32,9 +32,7 @@ class User
 		{
 			$_SESSION['user_id'] = $user->user_id;
 			header('Location: home.php');
-		} else {
-			return false;
-		}
+		} else { return false; }
 
 	}
 
@@ -55,6 +53,20 @@ class User
 		$_SESSION = array();
 		session_destroy();
 		header('Location: ../index.php');
+	}
+
+	public function checkEmail($email)
+	{
+		$stmt = $this->pdo->prepare("
+			SELECT `email`
+			FROM `users`
+			WHERE `email` = :email
+			");
+		$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+		$stmt->execute();
+		$count = $stmt->rowCount(); // affected rows
+		if($count > 0){ return true; }
+		else { return false; }
 	}
 
 } 
