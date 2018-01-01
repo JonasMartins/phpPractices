@@ -5,7 +5,7 @@
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 		$error = '';
-		if(!empty($screenName) or !empty($password) or !empty($email))
+		if(empty($screenName) or empty($password) or empty($email))
 		{
 			$error = 'All fields are required';
 		} else {
@@ -25,14 +25,12 @@
 				if($getFromUser->checkEmail($email) === true)
 				{	
 					$error = 'Email already in use';
-				} else { //  #TODO register new user on database
-
+				} else { 
+					$getFromUser->register($email,$screenName,$password);
+					header('Location: home.php');
 				}
-
 			}
-
 		}
-
 	}
 ?>
 <form method="post">
@@ -57,7 +55,7 @@
 		{ 
 			echo '<li class="error-li">
 	  					<div class="span-fp-error">'.$error.'</div>
-	 				</li>'
+	 				</li>';
 		}
 	?>		
 </div>

@@ -33,8 +33,23 @@ class User
 			$_SESSION['user_id'] = $user->user_id;
 			header('Location: home.php');
 		} else { return false; }
-
 	}
+
+	public function register($email, $screenName, $password)
+	{
+		$password = md5($password);
+		$stmt = $this->pdo->prepare("
+		INSERT INTO `users` (`email`, `password`,`screenName`,`profileImage`,`profileCover`) 
+		VALUES (:email, :password, :screenName, 'assets/images/defaultProfileImage.png', 'assets/images/defaultCoverImage.png') ");
+		$stmt->bindParam(":email", $email, PDO::PARAM_STR);
+		$stmt->bindParam(":password", $password, PDO::PARAM_STR);
+		$stmt->bindParam(":screenName", $screenName, PDO::PARAM_STR);
+		$stmt->execute();
+
+		$user_id = $this->pdo->lastInsertId();
+		$_SESSION['user_id'] = $user_id;
+	}
+
 
 	public function userData($user_id)
 	{
