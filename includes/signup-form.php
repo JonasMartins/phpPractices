@@ -27,12 +27,13 @@
 				{	
 					$error = 'Email already in use';
 				} else { 
-					$getFromUser->create('users',array('email'=>$email,
+					$user_id = $getFromUser->create('users',array('email'=>$email,
 						'password'=>$password,
 						'screenName'=>$screenName,
 						'profileImage'=>'assets/images/defaultProfileImage.png',
 						'profileCover'=>'assets/images/defaultCoverImage.png'
 					));
+					$_SESSION['iser_id'] = $user_id;
 					header('Location: includes/signup.php?step=1');
 				}
 			}
