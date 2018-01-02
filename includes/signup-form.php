@@ -5,6 +5,7 @@
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 		$error = '';
+		$password = md5($password);
 		if(empty($screenName) or empty($password) or empty($email))
 		{
 			$error = 'All fields are required';
@@ -26,8 +27,13 @@
 				{	
 					$error = 'Email already in use';
 				} else { 
-					$getFromUser->register($email,$screenName,$password);
-					header('Location: home.php');
+					$getFromUser->create('users',array('email'=>$email,
+						'password'=>$password,
+						'screenName'=>$screenName,
+						'profileImage'=>'assets/images/defaultProfileImage.png',
+						'profileCover'=>'assets/images/defaultCoverImage.png'
+					));
+					header('Location: includes/signup.php?step=1');
 				}
 			}
 		}
