@@ -27,7 +27,6 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false)
  		<link rel="stylesheet" href="<?php echo BASE_URL;?>assets/css/style-complete.css"/>
    		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"/>  
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>  	  
-
     </head>
 <!--Helvetica Neue-->
 <body>
@@ -100,12 +99,12 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false)
 			</a>
 		</li>
 		<li>
-		 <a href="PROFILE-LINK/followers">
+		 <a href="<?php echo BASE_URL.$profileData->username;?>/followers">
 				<div class="n-head">
 					FOLLOWERS
 				</div>
 				<div class="n-bottom">
-					<span class="count-followers">0</span>
+					<span class="count-followers"><?php echo $profileData->followers;?></span>
 				</div>
 			</a>
 		</li>
@@ -139,45 +138,47 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false)
 	 <div class="profile-info-inner">
 	 <!-- PROFILE-IMAGE -->
 		<div class="profile-img">
-			<img src="PROFILE-IMAGE"/>
+			<img src="<?php echo BASE_URL.$profileData->profileImage;?>"/>
 		</div>	
 
 		<div class="profile-name-wrap">
 			<div class="profile-name">
-				<a href="PROFILE-LINK">SCREEN-NAME</a>
+				<a href="<?php echo BASE_URL.$profileData->proCover;?>"><?php echo $profileData->screenName;?></a>
 			</div>
 			<div class="profile-tname">
-				@<span class="username">USERNAME</span>
+				@<span class="username"><?php echo $profileData->username;?></span>
 			</div>
 		</div>
 
 		<div class="profile-bio-wrap">
 		 <div class="profile-bio-inner">
-		    PROFILE-BIO
+		    <?php echo $profileData->bio;?>
 		 </div>
 		</div>
 
 <div class="profile-extra-info">
 	<div class="profile-extra-inner">
 		<ul>
-			<li>
-				<div class="profile-ex-location-i">
-					<i class="fa fa-map-marker" aria-hidden="true"></i>
-				</div>
-				<div class="profile-ex-location">
-					PROFILE-COUNTRY
-				</div>
-			</li>
-
-			<li>
-				<div class="profile-ex-location-i">
-					<i class="fa fa-link" aria-hidden="true"></i>
-				</div>
-				<div class="profile-ex-location">
-					<a href="#">PROFILE-WEBSITE;</a>
-				</div>
-			</li>
-
+			<?php if(!empty($profileData->country)) { ?>
+				<li>
+					<div class="profile-ex-location-i">
+						<i class="fa fa-map-marker" aria-hidden="true"></i>
+					</div>
+					<div class="profile-ex-location">
+						<?php echo $profileData->country;?>
+					</div>
+				</li>
+			<?php } ?>
+			<?php if(!empty($profileData->website)) {?>
+				<li>
+					<div class="profile-ex-location-i">
+						<i class="fa fa-link" aria-hidden="true"></i>
+					</div>
+					<div class="profile-ex-location">
+						<a href="<?php echo $profileData->website;?>" target="_blink"><?php echo $profileData->website;?></a>
+					</div>
+				</li>
+			<?php }?>
 			<li>
 				<div class="profile-ex-location-i">
 					<!-- <i class="fa fa-calendar-o" aria-hidden="true"></i> -->
