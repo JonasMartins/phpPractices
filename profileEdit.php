@@ -6,6 +6,33 @@
 	}
 	$user_id = $_SESSION['user_id'];
 	$user = $getFromUser->userData($user_id);
+
+	if(isset($_POST['screenName']))
+	{
+		if(!empty($_POST['screenName']))
+		{	
+			$screenName = $getFromUser->checkInput($_POST['screenName']);
+			$bio = $getFromUser->checkInput($_POST['bio']);
+			$country = $getFromUser->checkInput($_POST['country']);
+			$website = $getFromUser->checkInput($_POST['website']);
+			if(strlen($screenName)>20){
+				$error = "Name must be between 6 and 20 characters";
+			} else if(strlen($bio)>120){
+				$error = "Bio is too long";
+			} else {
+				$getFromUser->update('users', $user_id, array(
+					'screenName' => $screenName,
+					'bio' => $bio,
+					'country' => $country,
+					'website' => $website	
+					));
+				header('Location: ',$user->username);
+			}
+		} else {
+			$error = "Name fild can not be blank";
+		}
+	}
+
 ?>
 
 <!doctype html>
