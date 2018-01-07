@@ -32,7 +32,24 @@
 			$error = "Name fild can not be blank";
 		}
 	}
-
+	 if(isset($_FILES['profileImage']))
+	 {
+	 		if(!empty($_FILES['profileImage']['name'][0]))
+	 		{
+	 			$fileRoot = $getFromUser->uploadImage($_FILES['profileImage']);
+	 			$getFromUser->update('users', $user_id array('profileImage' => $fileRoot))
+	 			header('Location: '.$user->username);
+	 		}
+	 }
+	 if(isset($_FILES['profileCover']))
+	 {
+	 		if(!empty($_FILES['profileCover']['name'][0]))
+	 		{
+	 			$fileRoot = $getFromUser->uploadImage($_FILES['profileCover']);
+	 			$getFromUser->update('users', $user_id array('profileCover' => $fileRoot))
+	 			header('Location: '.$user->username);'
+	 		}
+	 }
 ?>
 
 <!doctype html>
@@ -114,7 +131,7 @@
 								<label for="file-up">
 									Upload photo
 								</label>
-								<input type="file" name="profileCover" id="file-up" />
+								<input type="file" name="profileCover" onchange="this.form.submit();" id="file-up" />
 							</li>
 								<li>
 								<label for="cover-upload-btn">
@@ -175,7 +192,7 @@
 		</ul>
 		<div class="edit-button">
 			<span>
-				<button class="f-btn" type="button" value="Cancel">Cancel</button>
+				<button class="f-btn" type="button" onclick="window.location.href='<?php echo $user->username; ?>'" value="Cancel">Cancel</button>
 			</span>
 			<span>
 				<input type="submit" id="save" value="Save Changes">
@@ -213,7 +230,7 @@
 								<label for="profileImage">
 									Upload photo
 								</label>
-								<input id="profileImage" type="file"  name="profileImage"/>
+								<input id="profileImage" type="file" onchange="this.form.submit();" name="profileImage"/>
 								
 							</li>
 							<li><a href="#">Remove</a></li>
@@ -232,11 +249,17 @@
 
 			    <form id="editForm" method="post" enctype="multipart/Form-data">	
 				<div class="profile-name-wrap">
-					<!-- <ul>
-	 					 <li class="error-li">
-						 	 <div class="span-pe-error"></div>
-						 </li>
-					 </ul>  -->
+					<?php 
+						if(isset($imageError))
+						{
+							echo '<ul>
+			 					<li class="error-li">
+								 	<div class="span-pe-error">'.$imageError.'</div>
+								</li>
+							</ul>';
+						}
+					?>
+					  
 					<div class="profile-name">
 						<input type="text" name="screenName" value="<?php echo $user->screenName; ?>"/>
 					</div>
@@ -266,7 +289,16 @@
 									<input type="text" name="website" placeholder="Website" value="<?php echo $user->website; ?>"/>
 								</div>
 							</li>
-				</form>
+							<?php 
+								if(isset($error))
+								{
+									echo '
+					 					<li class="error-li">
+										 	<div class="span-pe-error">'.$error.'</div>
+										</li>';
+								}
+							?>
+					</form>
 						</ul>						
 					</div>
 				</div>
