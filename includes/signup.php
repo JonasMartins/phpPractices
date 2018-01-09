@@ -54,7 +54,7 @@
 		<!-- step wrapper-->
 	<?php if($_GET['step'] ==  '1'){ ?>
  		<div class="step-wrapper">
-		    <div class="step-container">
+		  <div class="step-container">
 				<form method="post">
 					<h2>Choose a Username</h2>
 					<h4>Don't worry, you can always change it later.</h4>

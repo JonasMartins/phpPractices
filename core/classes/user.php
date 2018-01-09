@@ -117,6 +117,21 @@ class User
 
 	}
 
+	public function checkPassword($password)
+	{
+		$password = md5($password);
+		$stmt = $this->pdo->prepare("
+			SELECT `password`
+			FROM `users`
+			WHERE `password` = :password
+			");
+		$stmt->bindParam(":password", $password, PDO::PARAM_STR);
+		$stmt->execute();
+		$count = $stmt->rowCount(); // affected rows
+		if($count > 0){ return true; }
+		else { return false; }
+
+	}
 
 	public function checkEmail($email)
 	{

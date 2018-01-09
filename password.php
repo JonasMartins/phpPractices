@@ -7,6 +7,30 @@
 	{
 		header('Location: '.BASE_URL.'index.php');
 	}
+	if(isset($_POST['submit']))
+	{
+		$currentPwd = $_POST['correntPwd'];
+		$newPassword = $_POST['newPassword'];
+		$rePassword = $_POST['rePassword'];
+		$error = array();
+		if(!empty($currentPwd) && !empty($newPassword) && !empty($rePassword))
+		{
+			if($getFromUser->checkPassword($currentPwd) === true)
+			{
+				if(strlen($newPassword) < 6){ $error['newPassword'] = "Password is too short"; }
+				else if($newPassword != $rePassword){ $error['rePassword'] = "Password does not match"; }
+				else { 
+					$getFromUser->update('users', $user_id, array('password' => md5($newPassword)));
+					header('Location:'.BASE_URL.$user->username);
+				}
+			} else {
+				$error['currentPwd'] = "Password is incorrect";
+			}
+
+		} else {
+			$error['fields'] = "All fields are required";
+		}
+	}
 ?>
 <html>
 	<head>
@@ -108,8 +132,6 @@
 
 			</div>
 		</div><!--LEFTER ENDS-->
-		
-	
 	<div class="righter">
 		<div class="inner-righter">
 			<div class="acc">
@@ -126,7 +148,7 @@
 						<div class="acc-right">
 							<input type="password" name="currentPwd"/>
 							<span>
-								<!-- Current Pwd Error -->
+								<<?php if(isset($error['currentPwd'])){ echo $error['correntPwd']; }?>
 							</span>
 						</div>
 					</div>
@@ -138,7 +160,7 @@
 						<div class="acc-right">
 							<input type="password" name="newPassword" />
 							<span>
-								<!-- NewPassword Error -->
+								<?php if(isset($error['newPassword'])){ echo $error['newPassword']; }?>
 							</span>
 						</div>
 					</div>
@@ -150,7 +172,7 @@
 						<div class="acc-right">
 							<input type="password" name="rePassword"/>
 							<span>
-								<!-- RePassword Error -->
+								<?php if(isset($error['rePassword'])){ echo $error['rePassword']; }?>
 							</span>
 						</div>
 					</div>
@@ -161,7 +183,7 @@
 							<input type="Submit" name="submit" value="Save changes"/>
 						</div>
 						<div class="settings-error">
-							<!-- Fields Error -->
+							<?php if(isset($error['fields'])){ echo $error['fields']; }?>
  						</div>	
 					</div>
 				 </form>
