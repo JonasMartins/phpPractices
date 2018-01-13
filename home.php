@@ -6,6 +6,29 @@
 	{
 		header('Location: index.php');
 	}
+	if(isset($_POST['tweet']))
+	{
+		$status = $getFromUser->checkInput($_POST['status']);
+		$tweetImage = '';
+		if(!empty($status) or !empty($_FILES['file']['name'][0]))
+		{
+			if(!empty($_FILES['file']['name'][0])){
+				$tweetImage = $getFromUser->uploadImage($_FILES['file']);
+			}
+			if(strlen($status > 140)){
+				$error = "The tweet is too long";
+			}
+			$getFromUser->create('tweets',array(
+				'status' => $status,
+				'tweetBy' => $user_id,
+				'tweetImage' => $tweetImage,
+				'postedOn' => date('Y-m-d H:i:s')
+				));
+		} else {
+			$error = "Type or choose image to tweet";
+		}
+	}
+
 ?>
 
 <!--
@@ -159,7 +182,17 @@
 						 		<ul>
 						 			<input type="file" name="file" id="file"/>
 						 			<li><label for="file"><i class="fa fa-camera" aria-hidden="true"></i></label>
-						 			<span class="tweet-error"></span>
+						 			<span class="tweet-error"><?php 
+						 				if(isset($error))
+						 				{
+						 					echo $error;
+						 				} 
+						 				else if(isset($imageError))
+						 				{
+						 					echo $imageError;
+						 				}
+						 				?></span>
+						 				
 						 			</li>
 						 		</ul>
 						 	</div>

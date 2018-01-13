@@ -180,7 +180,7 @@ class User
 		$fileSize = $file['size'];
 		$error = $file['error'];
 
-		$ext = explode('.' $filename);
+		$ext = explode('.',$filename);
 		$ext = strtolower(end($ext));
 		$allowed_ext = array('jpg','png','jpeg');
 
