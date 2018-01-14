@@ -209,6 +209,7 @@
 				<!--Tweet SHOW WRAPPER-->
 				 <div class="tweets">
  				  	<!--TWEETS HERE-->
+ 				  	<?php $getFromTweet->tweets(); ?>
  				 </div>
  				<!--TWEETS SHOW WRAPPER-->
 
