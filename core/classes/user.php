@@ -19,7 +19,8 @@ class User
 
 	public function search($search)
 	{
-		$stmt->$this->pdo->prepare(
+		
+		$stmt = $this->pdo->prepare(
 			"SELECT `user_id`,`username`, `screenName`, `profileImage`, `profileCover`
 			FROM `users`
 			WHERE `username` LIKE ? OR `screenName` LIKE ? ");

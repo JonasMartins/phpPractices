@@ -9,7 +9,7 @@
 		{
 			echo '<div class="nav-right-down-wrap"><ul>';
 			
-			for($result as $user)
+			foreach($result as $user)
 			{
 				echo 
 				'<li>
