@@ -189,7 +189,7 @@ class User
 		{
 			if($error === 0){
 				if($fileSize <= 209272152){
-					$fileRoot =	'users/'. $filename;
+					$fileRoot =	'/opt/lampp/htdocs/twitter/users/'. $filename;
 					move_uploaded_file($fileTmp, $fileRoot);
 					return $fileRoot;
 				} else {
