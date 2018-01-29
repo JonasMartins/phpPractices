@@ -3,7 +3,8 @@
 <?php include(SHARED_PATH.'/staff_header.php')?>
 
 <div id="content">
- 	
+ 	<div id="main-menu">
+  </div>
 </div>
   
 <?php include(SHARED_PATH.'/staff_footer.php')?>
