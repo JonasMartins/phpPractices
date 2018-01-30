@@ -9,4 +9,14 @@ function url_for($script_path)
   return WWW_ROOT . $script_path;
 }
 
+function u($url="")
+{
+	return urlencode($url);
+}
+
+function raw_u($url="")
+{
+	return rawurlencode($url);
+}
+
 ?>
