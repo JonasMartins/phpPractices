@@ -1,6 +1,6 @@
 <?php 
 	
-	$id = $_GET['id'];
+	$id = $_GET['id'] ?? '1'; // default value syntax phph > 7.0
 
 ?>
 
