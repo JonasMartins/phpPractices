@@ -19,4 +19,7 @@ function raw_u($url="")
 	return rawurlencode($url);
 }
 
+function h($string="") {
+  return htmlspecialchars($string);
+}
 ?>
