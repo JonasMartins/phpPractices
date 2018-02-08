@@ -21,5 +21,9 @@
   define("WWW_ROOT", $doc_root);
 
   require_once('functions.php');
+  require_once('database.php');
+
+  // always connecting with database when initialize the application
+  $db = db_connect();
 
 ?>
