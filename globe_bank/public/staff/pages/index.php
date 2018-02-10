@@ -2,8 +2,6 @@
 
 <?php
 
-  $subject_set = find_all_subjects();
-
   $pages = [
     ['id' => '1', 'position' => '1', 'visible' => '1', 'menu_name' => 'Globe Bank'],
     ['id' => '2', 'position' => '2', 'visible' => '1', 'menu_name' => 'History'],
@@ -46,9 +44,6 @@
         </tr>
       <?php } ?>
     </table>
-
-    <?php pg_free_result($subject_set); ?>
-
   </div>
 
 </div>
