@@ -22,6 +22,7 @@
 
   require_once('functions.php');
   require_once('database.php');
+  require_once('query_functions.php');
 
   // always connecting with database when initialize the application
   $db = db_connect();
