@@ -13,4 +13,23 @@
 		pg_close($connection);
 	}
 
+	// function confirm_db_connect() 
+	// {
+ //    if(pg_last_error()) {
+ //      $msg = "Database connection failed: ";
+ //      $msg .= mysqli_connect_error();
+ //      $msg .= " (" . mysqli_connect_errno() . ")";
+ //      exit($msg);
+ //    }
+ //  }
+
+  function confirm_result_set($result_set) 
+  {
+    if (!$result_set) {
+    	exit("Database query failed.");
+    }
+  }
+
+
+
 ?>
