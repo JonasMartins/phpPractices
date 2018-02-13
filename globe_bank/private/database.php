@@ -1,10 +1,11 @@
 <?php 
 
-	require_once('db_credentials.php');
+	require('db_credentials.php');
 	
 	function db_connect()
 	{
-		$connection = pg_connect("DB_SERVER","DB_USER","DB_PASS","DB_NAME");
+		//echo 'host='.DB_SERVER.' port=5432 dbname='.DB_NAME.' user='.DB_USER.' password='.DB_PASS;
+		$connection = pg_connect('host='.DB_SERVER.' port=5432 dbname='.DB_NAME.' user='.DB_USER.' password='.DB_PASS);
 		return  $connection;
 	}
 
