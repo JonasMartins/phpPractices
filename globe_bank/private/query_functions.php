@@ -45,28 +45,30 @@
     }
   }
 
-  // function update_subject($subject) {
-  //   global $db;
+  function update_subject($subject) {
+    global $db;
 
-  //   $sql = "UPDATE subjects SET ";
-  //   $sql .= "menu_name='" . $subject['menu_name'] . "', ";
-  //   $sql .= "position='" . $subject['position'] . "', ";
-  //   $sql .= "visible='" . $subject['visible'] . "' ";
-  //   $sql .= "WHERE id='" . $subject['id'] . "' ";
-  //   $sql .= "LIMIT 1";
+    $sql = "UPDATE subjects SET ";
+    $sql .= "menu_name='" . $subject['menu_name'] . "', ";
+    $sql .= "position='" . $subject['position'] . "', ";
+    $sql .= "visible='" . $subject['visible'] . "' ";
+    $sql .= "WHERE id='" . $subject['id'] . "' ";
+    //$sql .= "LIMIT 1";
 
-  //   $result = mysqli_query($db, $sql);
-  //   // For UPDATE statements, $result is true/false
-  //   if($result) {
-  //     return true;
-  //   } else {
-  //     // UPDATE failed
-  //     echo mysqli_error($db);
-  //     db_disconnect($db);
-  //     exit;
-  //   }
+    echo $sql;
 
-  // }
+    $result = pg_query($db, $sql);
+    // For UPDATE statements, $result is true/false
+    if(!$result) {
+      // UPDATE failed
+      echo pg_last_error($db);
+      db_disconnect($db);
+      exit;
+    } else {
+      return true;
+    }
+
+  }
 
   function find_all_pages() {
     global $db;
