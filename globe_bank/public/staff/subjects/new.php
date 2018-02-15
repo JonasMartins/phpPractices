@@ -2,7 +2,12 @@
 
 require_once('../../../private/initialize.php');
 
-$test = $_GET['test'] ?? '';
+$subject_set = find_all_subjects();
+$subject_count = pg_num_rows($subject_set) + 1;
+pg_free_result($subject_set);
+
+$subject = [];
+$subject["position"] = $subject_count;
 
 ?>
 
@@ -25,8 +30,16 @@ $test = $_GET['test'] ?? '';
         <dt>Position</dt>
         <dd>
           <select name="position">
-            <option value="1">1</option>
-          </select>
+            <?php
+              for($i=1; $i <= $subject_count; $i++) {
+                echo "<option value=\"{$i}\"";
+                if($subject["position"] == $i) {
+                  echo " selected";
+                }
+                echo ">{$i}</option>";
+              }
+            ?>
+            </select>
         </dd>
       </dl>
       <dl>
