@@ -63,17 +63,32 @@
 
 		private function validateFirstName($firstName)
 		{
-			
+			if(!isInBetween($firstName,2,25)){
+				array_push($this->errorArray, "Your First Name must be between 2 and 25 characters.");
+				return;
+			}
 		}
 
 		private function validateLastName($lastName)
 		{
-			
+			if(!isInBetween($lastName,5,25)){
+				array_push($this->errorArray, "Your Last Name must be between 5 and 25 characters.");
+				return;
+			}	
 		}
 
 		private function validateEmails($email, $confirEmail)
 		{
-			
+			if($email != !confirmEmail){
+				array_push($this->errorArray, "Email confirmation don't match.");
+				return;
+			}
+
+			if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+				array_push($this->errorArray, "Invalid Email format.");
+				return;	
+			}
+
 		}
 
 		private function validatePasswords($password, $confirmPassword)
