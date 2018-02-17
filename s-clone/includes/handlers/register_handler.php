@@ -30,7 +30,11 @@
 		$password = sanitizeFormPassword($_POST['password']);
 		$confirmPassword = sanitizeFormPassword($_POST['confirmPassword']);
 
-		
+		$data = ['username'=>$username,'firstName'=>$firstName,'lastName'=>$lastName,'email'=>$email,
+		'confirmEmail'=>$confirmEmail,'password'=>$password,'confirmPassword'=>$confirmPassword];
+
+		$account->register($data);
+			
 	}
 
 ?>
