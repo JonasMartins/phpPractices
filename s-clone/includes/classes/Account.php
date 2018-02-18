@@ -26,20 +26,18 @@
 			$this->validateEmails($data['email'],$data['confirmEmail']);
 			$this->validatePasswords($data['password'],$data['confirmPassword']);
 
-			if(empty($this->errorArray) == true){
+			if(empty($this->errorArray) == true)
 				return true;
-			} else {
+			else
 				return false;
-			}
 		}
 
 		public function getError($error)
 		{
-			if(!isset($this->errorArray[$error])){
+			if(!isset($this->errorArray[$error]))
 				$error = "";
-			} else {
+			else
 				$error = $this->errorArray[$error];
-			}
 			return "<p><span class='error-message'>".$error."</span></p>";
 		}
 
@@ -62,9 +60,8 @@
 		private function isInBetween($value,$min,$max)
 		{
 			$flag = true;
-			if((strlen($value) > $max) or (strlen($value) < $min) ){
+			if((strlen($value) > $max) or (strlen($value) < $min) )
 				$flag = false;
-			}
 			return $flag;
 		}
 

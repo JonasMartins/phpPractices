@@ -1,13 +1,16 @@
 <?php 
 	include("includes/classes/Account.php");
-	
 
 	$account = new Account();
 
-	
 	include("includes/handlers/register_handler.php");
 	include("includes/handlers/login_handler.php");
 
+	function getSetedValue($input)
+	{
+		if(isset($_POST[$input]))
+			echo $_POST[$input];
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,31 +37,31 @@
 			<p>
 				<?php echo $account->getError('username'); ?>
 				<label for="username">Username</label>
-				<input id="username" name="username" type="text" placeholder="username" required />
+				<input id="username" name="username" type="text" value="<?php getSetedValue('username');?>" placeholder="username" required />
 			</p>
 
 			<p>
 				<?php echo $account->getError('firstName'); ?>
 				<label for="firstName">First Name</label>
-				<input id="firstName" name="firstName" type="text" required />
+				<input id="firstName" name="firstName" type="text" value="<?php getSetedValue('firstName');?>" required />
 			</p>
 
 			<p>
 				<?php echo $account->getError('lastName'); ?>
 				<label for="lastName">Last Name</label>
-				<input id="lastName" name="lastName" type="text" placeholder="username" required />
+				<input id="lastName" name="lastName" type="text" value="<?php getSetedValue('lastName');?>" placeholder="username" required />
 			</p>
 
 			<p>
 				<?php echo $account->getError('emailInvalid'); ?>
 				<label for="email">Email</label>
-				<input id="email" name="email" type="email" placeholder="user@email.com" required />
+				<input id="email" name="email" type="email" value="<?php getSetedValue('email');?>" placeholder="user@email.com" required />
 			</p>
 
 			<p>
 				<?php echo $account->getError('email'); ?>
 				<label for="confirmEmail">Confirm Email</label>
-				<input id="confirmEmail" name="confirmEmail" type="email" required />
+				<input id="confirmEmail" name="confirmEmail" type="email" value="<?php getSetedValue('confirmEmail');?>" required />
 			</p>
 
 
@@ -66,13 +69,13 @@
 				<?php echo $account->getError('PasswordInvalid'); ?>
 				<?php echo $account->getError('passwordLength'); ?>
 				<label for="password">Password</label>
-				<input id="password" name="password" type="password" required />				
+				<input id="password" name="password" type="password" value="<?php getSetedValue('password');?>" required />				
 			</p>
 
 			<p>
 				<?php echo $account->getError('password'); ?>
 				<label for="confirmPassword">Confirm Password</label>
-				<input id="confirmPassword" name="confirmPassword" type="password" required />				
+				<input id="confirmPassword" name="confirmPassword" value="<?php getSetedValue('confirmPassword');?>" type="password" required />				
 			</p>
 
 			<button type="submit" name="registerButton">Sign Up</button>
