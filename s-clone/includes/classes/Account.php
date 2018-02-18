@@ -1,4 +1,5 @@
 <?php 
+	include("Constants.php");
 
 	class Account 
 	{
@@ -71,7 +72,7 @@
 		private function validateUsername($username)
 		{
 			if(!$this->isInBetween($username,5,25)){
-				$this->errorArray['username'] = 'Your Username must be between 5 and 25 characters.';
+				$this->errorArray['username']=Constants::$usernameErrorMessage;
 				return;
 			}
 			// check if username exists
@@ -80,7 +81,7 @@
 		private function validateFirstName($firstName)
 		{
 			if(!$this->isInBetween($firstName,2,25)){
-				$this->errorArray['firstName'] = 'Your First Name must be between 2 and 25 characters.';
+				$this->errorArray['firstName']=Constants::$firstNameErrorMessage;
 				return;
 			}
 		}
@@ -88,7 +89,7 @@
 		private function validateLastName($lastName)
 		{
 			if(!$this->isInBetween($lastName,5,25)){
-				$this->errorArray['lastName'] = 'Your Last Name must be between 5 and 25 characters.';
+				$this->errorArray['lastName']=Constants::$lastNameErrorMessage; 
 				return;
 			}	
 		}
@@ -96,12 +97,12 @@
 		private function validateEmails($email, $confirmEmail)
 		{
 			if($email != $confirmEmail){
-				$this->errorArray['email'] = 'Email confirmation don\'t match.';
+				$this->errorArray['email']=Constants::$emailConfirmationErrorMessage;
 				return;
 			}
 
 			if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
-				$this->errorArray['emailInvalid'] = 'Invalid Email format.';
+				$this->errorArray['emailInvalid']=Constants::$emailInvalidErrorMessage; 
 				return;	
 			}
 		}
@@ -109,16 +110,16 @@
 		private function validatePasswords($password, $confirmPassword)
 		{
 			if($password != $confirmPassword){
-				$this->errorArray['password'] = 'Password confirmation don\'t match.';
+				$this->errorArray['password']=Constants::$passwordConfirmationErrorMessage; 
 				return;
 			}
 			if(preg_match('/[^A-Za-z0-9]/', $password)){
-				$this->errorArray['PasswordInvalid']='Password can only contain letters and/or numbers.';
+				$this->errorArray['PasswordInvalid']=Constants::$passwordInvalidErrorMessage;
 				return;
 			}
 
 			if(!$this->isInBetween($password,5,30)){
-				$this->errorArray['passwordLength']='Your Password must be between 5 and 30 characters.';
+				$this->errorArray['passwordLength']=Constants::$passwordLengthErrorMessage;
 				return;
 			}	
 		}
