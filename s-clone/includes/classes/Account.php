@@ -93,8 +93,23 @@
 
 		private function validatePasswords($password, $confirmPassword)
 		{
-			
+			if($password != !confirmPassword){
+				array_push($this->errorArray, "Password confirmation don't match.");
+				return;
+			}
+			if(preg_match('/[^A-Za-z0-9]/', $password)){
+				array_push($this->errorArray, "Password can only caontain letters and/or numbers.");
+				return;
+			}
+
+			if(!isInBetween($password,5,30)){
+				array_push($this->errorArray, "Your Password must be between 5 and 30 characters.");
+				return;
+			}	
 		}
+
+
+		
 
 	}
 
