@@ -24,6 +24,12 @@
 			$this->validateLastName($data['lastName']);
 			$this->validateEmails($data['email'],$data['confirmEmail']);
 			$this->validatePasswords($data['password'],$data['confirmPassword']);
+
+			if(empty($this->errorArray) == true){
+				return true;
+			} else {
+				return false;
+			}
 		}
 
 		// True if two arrays are equal false otherwise
@@ -109,7 +115,7 @@
 		}
 
 
-		
+
 
 	}
 

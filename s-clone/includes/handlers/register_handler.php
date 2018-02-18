@@ -33,7 +33,7 @@
 		$data = ['username'=>$username,'firstName'=>$firstName,'lastName'=>$lastName,'email'=>$email,
 		'confirmEmail'=>$confirmEmail,'password'=>$password,'confirmPassword'=>$confirmPassword];
 
-		$account->register($data);
+		echo $account->register($data);
 			
 	}
 
