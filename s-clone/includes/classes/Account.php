@@ -6,9 +6,10 @@
 
 		const FIELDS = ['username','firstName','lastName','email','confirmEmail','password','confirmPassword'];
 		private $errorArray;
-
-		public function __construct()
+		private $connection;
+		public function __construct($con)
 		{
+			$this->connection = $con;
 			$this->errorArray = array();
 		}
 
@@ -27,9 +28,31 @@
 			$this->validatePasswords($data['password'],$data['confirmPassword']);
 
 			if(empty($this->errorArray) == true)
-				return true;
+				return insertUserDetails($data);
 			else
 				return false;
+		}
+
+		private function insertUserDetails($data)
+		{
+			$password = md5($data['password']);
+			$profilePic = "assets/images/profile-pics/head_emerald.png";
+			$date = date("Y-m-d");
+
+			$sql = "INSERT INTO users ";
+			$sql .= "(username, firstName, lastName, email, password, signUpDate, profilePic)"
+			$sql .= "VALUES (";
+			$sql .= "'" . $data['username'] . "',";
+	    $sql .= "'" . $data['firstName'] . "',";
+	    $sql .= "'" . $data['lastName'] . "'";
+	    $sql .= "'" . $data['email'] . "'";
+	    $sql .= "'" . $password . "'";
+	    $sql .= "'" . $date . "'";
+	    $sql .= "'" . $profilePic . "'";
+	    $sql .= ")";
+
+	    $result = pg_query($this->connection, $sql);
+	    return $result;
 		}
 
 		public function getError($error)

@@ -2,7 +2,9 @@
 	include("includes/config.php");
 	include("includes/classes/Account.php");
 
-	$account = new Account();
+	$connection = db_connect();
+
+	$account = new Account($connection);
 
 	include("includes/handlers/register_handler.php");
 	include("includes/handlers/login_handler.php");
