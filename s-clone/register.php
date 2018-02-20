@@ -3,7 +3,7 @@
 	include("includes/classes/Account.php");
 
 	$connection = db_connect();
-
+		
 	$account = new Account($connection);
 
 	include("includes/handlers/register_handler.php");

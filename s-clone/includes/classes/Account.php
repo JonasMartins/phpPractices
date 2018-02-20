@@ -4,7 +4,6 @@
 	class Account 
 	{
 
-		const FIELDS = ['username','firstName','lastName','email','confirmEmail','password','confirmPassword'];
 		private $errorArray;
 		private $connection;
 		public function __construct($con)
@@ -15,11 +14,6 @@
 
 		public function register($data)
 		{
-			// $keys = array_keys($data);
-			// if(!$this->compareArrays($data,Account::FIELDS)){
-			// 	exit("Error in values from register form!");
-			// 	// redirect ...
-			// }
 
 			$this->validateUsername($data['username']);
 			$this->validateFirstName($data['firstName']);
@@ -28,30 +22,32 @@
 			$this->validatePasswords($data['password'],$data['confirmPassword']);
 
 			if(empty($this->errorArray) == true)
-				return insertUserDetails($data);
+				return $this->insertUser($data);
 			else
 				return false;
 		}
 
-		private function insertUserDetails($data)
+		private function insertUser($data)
 		{
 			$password = md5($data['password']);
 			$profilePic = "assets/images/profile-pics/head_emerald.png";
 			$date = date("Y-m-d");
 
 			$sql = "INSERT INTO users ";
-			$sql .= "(username, firstName, lastName, email, password, signUpDate, profilePic)"
+			$sql .= "(username, firstName, lastName, email, password, signUpDate, profilePic) ";
 			$sql .= "VALUES (";
 			$sql .= "'" . $data['username'] . "',";
 	    $sql .= "'" . $data['firstName'] . "',";
-	    $sql .= "'" . $data['lastName'] . "'";
-	    $sql .= "'" . $data['email'] . "'";
-	    $sql .= "'" . $password . "'";
-	    $sql .= "'" . $date . "'";
+	    $sql .= "'" . $data['lastName'] . "',";
+	    $sql .= "'" . $data['email'] . "',";
+	    $sql .= "'" . $password . "',";
+	    $sql .= "'" . $date . "',";
 	    $sql .= "'" . $profilePic . "'";
 	    $sql .= ")";
 
 	    $result = pg_query($this->connection, $sql);
+	    if($result == false)
+	    	echo $sql;
 	    return $result;
 		}
 

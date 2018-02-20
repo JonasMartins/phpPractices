@@ -33,7 +33,10 @@
 		$data = ['username'=>$username,'firstName'=>$firstName,'lastName'=>$lastName,'email'=>$email,
 		'confirmEmail'=>$confirmEmail,'password'=>$password,'confirmPassword'=>$confirmPassword];
 
-		$account->register($data);
+		if($account->register($data) == true)
+			header("Location: index.php");
+		else
+			header("location: register.php");
 			
 	}
 
