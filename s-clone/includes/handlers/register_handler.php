@@ -35,8 +35,6 @@
 
 		if($account->register($data) == true)
 			header("Location: index.php");
-		else
-			header("location: register.php");
 			
 	}
 

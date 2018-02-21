@@ -1,12 +1,14 @@
 <?php 
-	//ob_start();
+	
+	ob_start();
+	
 	require('db_credentials.php');
 	
 	function db_connect()
 	{
 		//echo 'host='.DB_SERVER.' port=5432 dbname='.DB_NAME.' user='.DB_USER.' password='.DB_PASS;
 		$connection = pg_connect('host='.DB_SERVER.' port=5432 dbname='.DB_NAME.' user='.DB_USER.' password='.DB_PASS);
-		return  $connection or die('connection failed');
+		return  $connection;
 	} 
 
 	function db_disconnect($connection)

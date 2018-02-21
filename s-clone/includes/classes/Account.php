@@ -21,6 +21,8 @@
 			$this->validateEmails($data['email'],$data['confirmEmail']);
 			$this->validatePasswords($data['password'],$data['confirmPassword']);
 
+			echo 'Error array: ' . json_encode($this->errorArray);
+
 			if(empty($this->errorArray) == true)
 				return $this->insertUser($data);
 			else
@@ -34,7 +36,7 @@
 			$date = date("Y-m-d");
 
 			$sql = "INSERT INTO users ";
-			$sql .= "(username, firstName, lastName, email, password, signUpDate, profilePic) ";
+			$sql .= "(username, first_name, last_name, email, password, signup_date, profile_pic) ";
 			$sql .= "VALUES (";
 			$sql .= "'" . $data['username'] . "',";
 	    $sql .= "'" . $data['firstName'] . "',";
@@ -46,8 +48,7 @@
 	    $sql .= ")";
 
 	    $result = pg_query($this->connection, $sql);
-	    if($result == false)
-	    	echo $sql;
+	    echo $sql;
 	    return $result;
 		}
 
