@@ -26,5 +26,6 @@
 
   // always connecting with database when initialize the application
   $db = db_connect();
+  $errors = [];
 
 ?>

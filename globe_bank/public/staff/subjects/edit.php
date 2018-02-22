@@ -6,7 +6,6 @@ if(!isset($_GET['id'])) {
   redirect_to(url_for('/staff/subjects/index.php'));
 }
 $id = $_GET['id'];
-
 if(is_post_request()) {
 
   // Handle form values sent by new.php
@@ -22,15 +21,15 @@ if(is_post_request()) {
     redirect_to(url_for('/staff/subjects/show.php?id=' . $id));
   else {
     $errors = $result;
-    var_dump($errors);
+    // var_dump($errors);
   }
 } else {
-
   $subject = find_subject_by_id($id);
-  $subject_set = find_all_subjects();
-  $subject_count = pg_num_rows($subject_set);
-  pg_free_result($subject_set);
 }
+
+$subject_set = find_all_subjects();
+$subject_count = pg_num_rows($subject_set);
+pg_free_result($subject_set);
 
 ?>
 
@@ -43,6 +42,8 @@ if(is_post_request()) {
 
   <div class="subject edit">
     <h1>Edit Subject</h1>
+
+    <?php echo display_error($errors); ?>
 
     <form action="<?php echo url_for('/staff/subjects/edit.php?id=' . h(u($id))); ?>" method="post">
       <dl>
