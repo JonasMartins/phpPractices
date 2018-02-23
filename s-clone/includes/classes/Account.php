@@ -85,6 +85,22 @@
 			return $flag;
 		}
 
+		public function login($username, $pwd)
+		{
+			$password = md5($pwd);
+			$sql = "SELECT * FROM users ";
+    	$sql .= "WHERE username='" . $username . "' ";
+    	$sql .= "AND password='" . $password . "'";
+
+	    $result = pg_query($this->connection, $sql);
+	    if(pg_num_rows($result) == 1)
+	    	return true;
+	    else{
+	    	$this->errorArray['loginFailed']=Constants::$loginFailed;
+	    	return false;
+	    }
+		}
+
 
 		private function validateUsername($username)
 		{

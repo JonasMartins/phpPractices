@@ -13,6 +13,7 @@
 
 		public static $usernameTaken = 'This username already exists';
 		public static $emailTaken = 'This email already exists';
+		public static $loginFailed = 'Something wrong with username or password';
 
 
 	}
