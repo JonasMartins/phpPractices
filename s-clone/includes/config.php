@@ -1,7 +1,8 @@
 <?php 
 	
 	ob_start();
-	
+	session_start();
+		
 	require('db_credentials.php');
 	
 	function db_connect()

@@ -33,8 +33,10 @@
 		$data = ['username'=>$username,'firstName'=>$firstName,'lastName'=>$lastName,'email'=>$email,
 		'confirmEmail'=>$confirmEmail,'password'=>$password,'confirmPassword'=>$confirmPassword];
 
-		if($account->register($data) == true)
+		if($account->register($data) == true){
+			$_SESSION['userLoggedIn'] = $username; // melhor o id ...... 
 			header("Location: index.php");
+		}
 			
 	}
 
