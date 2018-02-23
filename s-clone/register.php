@@ -39,6 +39,7 @@
 			<h2>Create an Account</h2>
 			<p>
 				<?php echo $account->getError('username'); ?>
+				<?php echo $account->getError('usernameTaken'); ?>
 				<label for="username">Username</label>
 				<input id="username" name="username" type="text" value="<?php getSetedValue('username');?>" placeholder="username" required />
 			</p>
@@ -63,6 +64,7 @@
 
 			<p>
 				<?php echo $account->getError('email'); ?>
+				<?php echo $account->getError('emailTaken'); ?>
 				<label for="confirmEmail">Confirm Email</label>
 				<input id="confirmEmail" name="confirmEmail" type="email" value="<?php getSetedValue('confirmEmail');?>" required />
 			</p>

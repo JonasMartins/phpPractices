@@ -92,7 +92,13 @@
 				$this->errorArray['username']=Constants::$usernameErrorMessage;
 				return;
 			}
-			// check if username exists
+			// UGLY
+			$checkUsernameQuery = pg_query($this->connection, "SELECT username FROM users WHERE username='$username'");
+			if(pg_num_rows($checkUsernameQuery) != 0) {
+				$this->errorArray['usernameTaken']=Constants::$usernameTaken;
+				return;
+			}
+
 		}
 
 		private function validateFirstName($firstName)
@@ -121,6 +127,12 @@
 			if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
 				$this->errorArray['emailInvalid']=Constants::$emailInvalidErrorMessage; 
 				return;	
+			}
+			// UGLY
+			$checkEmailQuery = pg_query($this->connection, "SELECT username FROM users WHERE email='$email'");
+			if(pg_num_rows($checkEmailQuery) != 0) {
+				$this->errorArray['emailTaken']=Constants::$emailTaken;
+				return;
 			}
 		}
 

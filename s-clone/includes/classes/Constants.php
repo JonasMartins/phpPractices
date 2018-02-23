@@ -11,6 +11,9 @@
 		public static $passwordInvalidErrorMessage = 'Password can only contain letters and/or numbers.';
 		public static $passwordLengthErrorMessage = 'Your Password must be between 5 and 30 characters.';
 
+		public static $usernameTaken = 'This username already exists';
+		public static $emailTaken = 'This email already exists';
+
 
 	}
 
