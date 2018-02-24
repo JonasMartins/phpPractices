@@ -151,6 +151,27 @@
 			}	
 		}
 
+		public function getRegisterShowJS()
+		{
+			return '<script>
+				$(document).ready(function() {
+					$("#loginForm").hide();
+					$("#registerForm").show();
+				});
+			</script>';
+		}
+
+		public function getLoginShowJS()
+		{
+			return '<script>
+				$(document).ready(function() {
+					$("#loginForm").show();
+					$("#registerForm").hide();
+				});
+			</script>';
+		}
+
+
 	}
 
 ?>

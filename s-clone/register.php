@@ -24,6 +24,12 @@
 	<script type="text/javascript" src="assets/js/register.js"></script>
 </head>
 <body>
+	<?php
+	if(isset($_POST['registerButton']))
+		echo $account->getRegisterShowJS();
+	else 
+		echo $account->getLoginShowJS();
+	?>
 	<div id="background">
 		<div id="loginContainer">
 			<div id="inputContainer">
