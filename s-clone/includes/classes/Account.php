@@ -1,5 +1,6 @@
 <?php 
 	include("Constants.php");
+	include("Queries.php");
 
 	class Account 
 	{
@@ -30,24 +31,8 @@
 		}
 
 		private function insertUser($data)
-		{
-			$password = md5($data['password']);
-			$profilePic = "assets/images/profile-pics/head_emerald.png";
-			$date = date("Y-m-d");
-
-			$sql = "INSERT INTO users ";
-			$sql .= "(username, first_name, last_name, email, password, signup_date, profile_pic) ";
-			$sql .= "VALUES (";
-			$sql .= "'" . $data['username'] . "',";
-	    $sql .= "'" . $data['firstName'] . "',";
-	    $sql .= "'" . $data['lastName'] . "',";
-	    $sql .= "'" . $data['email'] . "',";
-	    $sql .= "'" . $password . "',";
-	    $sql .= "'" . $date . "',";
-	    $sql .= "'" . $profilePic . "'";
-	    $sql .= ")";
-
-	    $result = pg_query($this->connection, $sql);
+		{	
+	    $result = pg_query($this->connection, Queries::insertUserSQL($data));
 	    echo $sql;
 	    return $result;
 		}
@@ -61,21 +46,6 @@
 			return "<p><span class='error-message'>".$error."</span></p>";
 		}
 
-		// True if two arrays are equal false otherwise
-		// private function compareArrays($a1=array(),$a2=array())
-		// {
-		// 	$flag = true;
-		// 	if (count($a1) != count($a2)){ $flag = false; }
-		// 	else {
-		// 		for($i=0; $i<count($a1); ++$i){
-		// 			if(strcmp($a1[$i], $a2[$i]) != 0){
-		// 				$flag = false;
-		// 			}
-		// 		}
-		// 	}
-		// 	return $flag;
-		// }
-
 		// Tests if a string is between a min and a max, true if it is, false if not 
 		private function isInBetween($value,$min,$max)
 		{
@@ -87,18 +57,32 @@
 
 		public function login($username, $pwd)
 		{
-			$password = md5($pwd);
-			$sql = "SELECT * FROM users ";
-    	$sql .= "WHERE username='" . $username . "' ";
-    	$sql .= "AND password='" . $password . "'";
-
-	    $result = pg_query($this->connection, $sql);
+	    $result = pg_query($this->connection, Queries::loginSQL($username,$pwd));
 	    if(pg_num_rows($result) == 1)
 	    	return true;
 	    else{
 	    	$this->errorArray['loginFailed']=Constants::$loginFailed;
 	    	return false;
 	    }
+		}
+		// true if username is unique, false otherwise
+		public function checkUsername($username)
+		{
+	    $result = pg_query($this->connection, Queries::checkUsernameSQL($username));
+	    if(pg_num_rows($result) == 0)
+				return true;
+			else 
+				return false;
+		}
+
+		// true if email is unique, false otherwise
+		public function checkEmail($email)
+		{
+	    $result = pg_query($this->connection, Queries::checkEmailSQL($email));
+	    if(pg_num_rows($result) == 0)
+				return true;
+			else 
+				return false;
 		}
 
 
@@ -108,9 +92,8 @@
 				$this->errorArray['username']=Constants::$usernameErrorMessage;
 				return;
 			}
-			// UGLY
-			$checkUsernameQuery = pg_query($this->connection, "SELECT username FROM users WHERE username='$username'");
-			if(pg_num_rows($checkUsernameQuery) != 0) {
+
+			if(!$this->checkUsername($username)){
 				$this->errorArray['usernameTaken']=Constants::$usernameTaken;
 				return;
 			}
@@ -144,9 +127,8 @@
 				$this->errorArray['emailInvalid']=Constants::$emailInvalidErrorMessage; 
 				return;	
 			}
-			// UGLY
-			$checkEmailQuery = pg_query($this->connection, "SELECT username FROM users WHERE email='$email'");
-			if(pg_num_rows($checkEmailQuery) != 0) {
+			
+			if(!$this->checkEmail($email)){
 				$this->errorArray['emailTaken']=Constants::$emailTaken;
 				return;
 			}
@@ -168,9 +150,6 @@
 				return;
 			}	
 		}
-
-
-
 
 	}
 
