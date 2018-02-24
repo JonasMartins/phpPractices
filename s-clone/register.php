@@ -20,6 +20,8 @@
 <head>
 	<title>Welcome to Slotify</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/register.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/register.js"></script>
 </head>
 <body>
 	<div id="background">
@@ -38,11 +40,11 @@
 					</p>
 					<button type="submit" name="loginButton">Login</button>
 					<div class="hasAccountText">
-						<span id="hideLogin">Don't have an account yet? Signup Here</span>
+						<span id="hideLogin">Don't have an account yet? Signup here.</span>
 					</div>
 				</form>
 
-				<form id="resgisterForm" action="register.php" method="POST">
+				<form id="registerForm" action="register.php" method="POST">
 					<h2>Create an Account</h2>
 					<p>
 						<?php echo $account->getError('username'); ?>
@@ -92,7 +94,7 @@
 
 					<button type="submit" name="registerButton">Sign Up</button>
 					<div class="hasAccountText">
-						<span id="hideRegister">Already have an account? Log in Here</span>
+						<span id="hideRegister">Already have an account? Log in here.</span>
 					</div>
 				</form>
 			</div>
