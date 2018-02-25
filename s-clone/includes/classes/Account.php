@@ -22,7 +22,7 @@
 			$this->validateEmails($data['email'],$data['confirmEmail']);
 			$this->validatePasswords($data['password'],$data['confirmPassword']);
 
-			echo 'Error array: ' . json_encode($this->errorArray);
+			// echo 'Error array: ' . json_encode($this->errorArray);
 
 			if(empty($this->errorArray) == true)
 				return $this->insertUser($data);
