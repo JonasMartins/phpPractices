@@ -9,6 +9,8 @@
 	// } else 
 	// 	header("Location: register.php");
 
+	// commit 042 set all icons ... gitignore have ignore them.
+
 ?>
 <!DOCTYPE html>
 <html>
