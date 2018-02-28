@@ -27,7 +27,33 @@
 			</div>
 
 			<div id="nowPlayingCenter">
-				
+				<div class="content playerControls">
+					<div class="buttons">
+						<button class="controlButton shuffle" title="Shuffle">
+							<img src="assets/images/icons/shuffle.png" alt="Shuffle">
+						</button>
+						
+						<button class="controlButton previous" title="Previous">
+							<img src="assets/images/icons/previous.png" alt="Shuffle">
+						</button>
+						
+						<button class="controlButton play" title="Play">
+							<img src="assets/images/icons/play.png" alt="Shuffle">
+						</button>
+
+						<button class="controlButton pause" title="Pause">
+							<img src="assets/images/icons/pause.png" alt="Pause">
+						</button>
+						
+						<button class="controlButton next" title="Next">
+							<img src="assets/images/icons/next.png" alt="Shuffle">
+						</button>
+
+						<button class="controlButton repeat" title="Repeat">
+							<img src="assets/images/icons/repeat.png" alt="Shuffle">
+						</button>
+					</div>
+				</div>				
 			</div>
 
 			<div id="nowPlayingRight">
