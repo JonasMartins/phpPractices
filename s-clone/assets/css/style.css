@@ -57,3 +57,12 @@ html, body {
 .playerControls .buttons .pause{
 	display: none; 
 }
+.controlButton.pause img,
+.controlButton.play img {
+	width: 32px;
+	height: 32px;
+
+}
+.controlButton:hover {
+	cursor: pointer; 
+}
