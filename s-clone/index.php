@@ -53,6 +53,14 @@
 							<img src="assets/images/icons/repeat.png" alt="Shuffle">
 						</button>
 					</div>
+
+					<div class="playbackBar">
+						<span class="progressTime current">0.00</span>
+						<span class="progressBar"></span>
+
+						<span class="progressTime remaining">0.00</span>
+					</div>
+
 				</div>				
 			</div>
 
