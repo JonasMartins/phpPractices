@@ -23,7 +23,11 @@
 		<div id="nowPlayingBar">
 
 			<div id="nowPlayingLeft">
-				
+				<div class="content">
+					<span class="albumLink">
+						<img src="//upload.wikimedia.org/wikipedia/en/thumb/a/a8/Razorsedge.jpg/220px-Razorsedge.jpg" class="albumArtwork">
+					</span>
+				</div>
 			</div>
 
 			<div id="nowPlayingCenter">
