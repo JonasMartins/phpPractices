@@ -27,6 +27,14 @@
 					<span class="albumLink">
 						<img src="//upload.wikimedia.org/wikipedia/en/thumb/a/a8/Razorsedge.jpg/220px-Razorsedge.jpg" class="albumArtwork">
 					</span>
+					<div class="trackInfo">
+						<span class="trackName">
+							<span>Thunderstruck</span>
+						</span>
+						<span class="artistName">
+							<span>ACDC</span>
+						</span>
+					</div>
 				</div>
 			</div>
 
