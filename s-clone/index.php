@@ -56,7 +56,13 @@
 
 					<div class="playbackBar">
 						<span class="progressTime current">0.00</span>
-						<span class="progressBar"></span>
+						<span class="progressBar">
+							<div class="progressBarBg">
+								<div class="progress">
+									
+								</div>
+							</div>
+						</span>
 
 						<span class="progressTime remaining">0.00</span>
 					</div>
