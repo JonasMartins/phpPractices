@@ -22,7 +22,11 @@
 
 	<div id="mainContainer">
 		<div id="topContainer">
-			<div id="navBarContainer"></div>
+			<div id="navBarContainer">
+				<nav class="navBar">
+					<a href="index.php" class="logo"><img src="assets/images/icons/logo.png"></a>
+				</nav>
+			</div>
 		</div>
 
 
