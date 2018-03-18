@@ -1,12 +1,26 @@
 import React,{Component} from 'react';
+import '../css/styles.css'
+
 
 class Header extends Component {
 	
 	render(){
-	
+
+		// Kind of style
+		// const styles = {
+		// 	header:{
+		// 		background:'#03a9f4'
+		// 	},
+		// 	logo: {
+		// 		color:'#fff',
+		// 		fontFamily:'Anton',
+		// 		textAlign:'center'
+		// 	}
+		// } 
+
 		return (
 			<header>
-				<div>Logo</div>
+				<div className="logo">Logo</div>
 				<input type="text" />
 			</header>
 			)
