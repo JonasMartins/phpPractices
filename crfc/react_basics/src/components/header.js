@@ -4,24 +4,20 @@ import '../css/styles.css'
 
 class Header extends Component {
 	
-	render(){
+	inputChangeHandler(event)
+	{
+		// event is a json object
+		console.log(event.target.value)
+	}
 
-		// Kind of style
-		// const styles = {
-		// 	header:{
-		// 		background:'#03a9f4'
-		// 	},
-		// 	logo: {
-		// 		color:'#fff',
-		// 		fontFamily:'Anton',
-		// 		textAlign:'center'
-		// 	}
-		// } 
+
+	render(){
 
 		return (
 			<header>
 				<div className="logo">Logo</div>
-				<input type="text" />
+
+				<input type="text" onChange={(e) => this.inputChangeHandler(e)}/>
 			</header>
 			)
 
