@@ -4,10 +4,18 @@ import '../css/styles.css'
 
 class Header extends Component {
 	
-	inputChangeHandler(event)
+	state = {
+		title:'The keywords are',
+		keywords:'Hello'
+	}
+
+	inputChangeHandler = (event) =>
 	{
 		// event is a json object
-		console.log(event.target.value)
+		//console.log(event.target.value)
+		this.setState({
+			keywords:event.target.value
+		})
 	}
 
 
@@ -16,8 +24,8 @@ class Header extends Component {
 		return (
 			<header>
 				<div className="logo">Logo</div>
-
-				<input type="text" onChange={(e) => this.inputChangeHandler(e)}/>
+				<input type="text" onChange={this.inputChangeHandler}/>
+				<div>{this.state.title}</div>
 			</header>
 			)
 
