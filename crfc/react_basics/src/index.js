@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-import json from './db.json/';
+import json from './db.json';
 
 // components
 
 import Header from './components/header';
-import NewsList from './components/news_list ';
+import NewsList from './components/news_list';
 
 
 class App extends Component {
