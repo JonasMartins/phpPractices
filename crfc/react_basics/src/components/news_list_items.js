@@ -1,10 +1,23 @@
 import React from 'react';
- 
-// we can say like {item} instead of props, and remove props from below
-// this way is a little bit simple, a less confusing i guess
+import {css} from 'glamor';
+
 const NewsItem = (props) => {
+
+	let news_item = css({
+		padding:'20px',
+		boxSizing:'border-box',
+		borderBottom:'1px solid grey',
+		':hover':{
+			color:'red'
+		},
+		'@media(max-width:500px)':{
+			color:'blue'
+		}
+	})
+
+
 	return (
-			<div>
+			<div className={`${news_item}`}>
 				<h3>{props.item.title}</h3>
 				<div>
 					{props.item.feed}

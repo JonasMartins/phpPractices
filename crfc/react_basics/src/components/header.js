@@ -9,8 +9,6 @@ class Header extends Component {
 
 	inputChangeHandler = (event) =>
 	{
-		// event is a json object
-		//console.log(event.target.value)
 		this.setState({
 			keywords:event.target.value
 		})
@@ -19,6 +17,7 @@ class Header extends Component {
 
 	render(){
 
+		
 		return (
 			<header>
 				<div className="logo">Logo</div>
