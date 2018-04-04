@@ -11,7 +11,12 @@ import Profile from './components/profile';
 const App = () => {
 	return (
 		<BrowserRouter>
-			<Route/>
+			<div>
+				<header>Header</header>
+				<Route path="/" exact component={Home}/>
+				<Route path="/posts" component={Posts}/>
+				<Route path="/profiles" component={Profile}/>
+			</div>
 		</BrowserRouter>
 
 		)
