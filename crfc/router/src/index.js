@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { HashRouter,Route,Link } from 'react-router-dom';
+import { HashRouter,Route,Link,Switch } from 'react-router-dom';
 
 // MemoryRouter esconde toda a url, fica sempre a mesma do home
 // compoents
@@ -21,10 +21,15 @@ const App = () => {
 					}}>Profile</Link><br/> 
 					<hr/>
 				</header>
-				<Route path="/" exact component={Home}/>
-				<Route path="/posts" exact component={Posts}/>
-				<Route path="/posts/:id" component={PostsItem}/>
-				<Route path="/profiles" component={Profile}/>
+				<Switch>
+					<Route path="/posts/:id" component={PostsItem}/>
+					<Route path="/profiles" component={Profile}/>
+					<Route path="/posts" component={Posts}/>
+					<Route path="/" component={Home}/>
+				 {/* enciando as menos especificas routes para o final da cadeia de links, apenas assim
+				 para funcionar corretamente*/}
+				</Switch>
+
 			</div>
 		</HashRouter>
 
