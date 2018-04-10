@@ -26,6 +26,7 @@ const App = () => {
 					<Route path="/profiles" component={Profile}/>
 					<Route path="/posts" component={Posts}/>
 					<Route path="/" component={Home}/>
+				 	<Route component={Posts}/>
 				 {/* enciando as menos especificas routes para o final da cadeia de links, apenas assim
 				 para funcionar corretamente*/}
 				</Switch>
