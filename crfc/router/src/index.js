@@ -16,15 +16,17 @@ const App = () => {
 				<header>
 					<Link to="/">Home</Link><br/>
 					<Link to="/posts">Posts</Link><br/>
-					<Link to={{
+					<NavLink to={{
 						pathname:'/prfiles'
-					}}>Profile</Link><br/> 
+					}}>Profile</NavLink><br/> 
+					<NavLink to="/life">Life</NavLink><br/>
 					<hr/>
 				</header>
 				<Switch>
 					<Route path="/posts/:id" component={PostsItem}/>
 					<Route path="/profiles" component={Profile}/>
 					<Route path="/posts" component={Posts}/>
+					<Route path="/life" component={Life}/>
 					<Route path="/" component={Home}/>
 				 	<Route component={Posts}/>
 				 {/* enciando as menos especificas routes para o final da cadeia de links, apenas assim
