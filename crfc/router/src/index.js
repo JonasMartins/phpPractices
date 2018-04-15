@@ -8,6 +8,8 @@ import Home from './components/home';
 import Posts from './components/posts';
 import Profile from './components/profile';
 import PostItem from './components/post_item';
+import Life from './components/lifecycles';
+import Conditional from './components/conditional';
 
 const App = () => {
 	return (
@@ -20,6 +22,7 @@ const App = () => {
 						pathname:'/prfiles'
 					}}>Profile</NavLink><br/> 
 					<NavLink to="/life">Life</NavLink><br/>
+					<NavLink to="/conditional">Conditional</NavLink><br/>
 					<hr/>
 				</header>
 				<Switch>
@@ -27,6 +30,7 @@ const App = () => {
 					<Route path="/profiles" component={Profile}/>
 					<Route path="/posts" component={Posts}/>
 					<Route path="/life" component={Life}/>
+					<Route path="/conditional" component={Conditional}/>
 					<Route path="/" component={Home}/>
 				 	<Route component={Posts}/>
 				 {/* enciando as menos especificas routes para o final da cadeia de links, apenas assim
