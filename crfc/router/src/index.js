@@ -10,6 +10,7 @@ import Profile from './components/profile';
 import PostItem from './components/post_item';
 import Life from './components/lifecycles';
 import Conditional from './components/conditional';
+import User from './components/user';
 
 const App = () => {
 	return (
@@ -31,6 +32,7 @@ const App = () => {
 					<Route path="/posts" component={Posts}/>
 					<Route path="/life" component={Life}/>
 					<Route path="/conditional" component={Conditional}/>
+					<Route path="/user" component={User}/>
 					<Route path="/" component={Home}/>
 				 	<Route component={Posts}/>
 				 {/* enciando as menos especificas routes para o final da cadeia de links, apenas assim
